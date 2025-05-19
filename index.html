@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wi-Fi速度テスト</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #80deea);
+    color: #263238;
+    margin: 0; padding: 0;
+  }
+  header {
+    background: #00796b;
+    color: #e0f2f1;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+  main {
+    max-width: 900px;
+    margin: 2rem auto 4rem;
+    padding: 0 1.2rem;
+  }
+  section.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    padding: 1.8rem 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  section.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+  }
+  h1, h2 {
+    color: #004d40;
+    margin-top: 0;
+  }
+  h1 {
+    font-size: 2.6rem;
+    margin-bottom: 1.2rem;
+  }
+  h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    border-left: 5px solid #00796b;
+    padding-left: 0.6rem;
+  }
+  p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+  ul {
+    padding-left: 1.2rem;
+  }
+  ul li {
+    margin-bottom: 0.6rem;
+  }
+  code {
+    background: #e0f2f1;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+    color: #004d40;
+  }
+  pre {
+    background: #004d40;
+    color: #a7ffeb;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+  }
+  /* スムーズなスクロール */
+  html {
+    scroll-behavior: smooth;
+  }
+  /* リンク装飾（今回はなし） */
+  a {
+    color: #00796b;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.25s ease;
+  }
+  a:hover {
+    border-color: #004d40;
+  }
+  /* ダウンロードボタン */
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: #00796b;
+    color: #e0f2f1;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0,121,107,0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+  .download-btn:hover {
+    background-color: #004d40;
+    box-shadow: 0 6px 12px rgba(0,77,64,0.5);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  Wi-Fi速度テストコード 解説ページ
+</header>
+
+<main>
+  <section class="card">
+    <h2>1. 概要</h2>
+    <p>このページでは、Wi-Fi速度テストのコードをわかりやすく解説しています。ダウンロード速度、アップロード速度、Pingの測定方法や注意点を順を追って説明します。</p>
+  </section>
+
+  <section class="card">
+    <h2>2. 主な機能</h2>
+    <ul>
+      <li><code>ダウンロード速度テスト</code>：25MBのファイルを複数回ダウンロードして平均速度を算出</li>
+      <li><code>Pingテスト</code>：小さな画像ファイルを複数回リクエストして平均応答時間を計測</li>
+      <li><code>アップロード速度テスト</code>：ファイルをサーバに送信して速度を測定（サーバ側未実装）</li>
+      <li><code>環境情報表示</code>：OSやブラウザ情報をユーザーに分かりやすく表示</li>
+      <li><code>お問い合わせリンク</code>：Discord招待などのリンク表示機能</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>3. 主要コードのポイント</h2>
+
+    <h3>3-1. ダウンロード速度の測定</h3>
+    <p>以下の関数でファイルのダウンロード時間を測り、Mbps単位で速度を算出します。</p>
+    <pre><code>async function measureDownloadSpeed(repeatCount) {
+  const fileSizeBytes = 25 * 1024 * 1024; // 25MB
+  let speeds = [];
+
+  for (let i = 0; i &lt; repeatCount; i++) {
+    const start = performance.now();
+    await fetch('25mb_file.bin', {cache: 'no-store'});
+    const end = performance.now();
+    const durationSeconds = (end - start) / 1000;
+    const speedMbps = (fileSizeBytes * 8) / (durationSeconds * 1000 * 1000);
+    speeds.push(speedMbps);
+  }
+
+  const avgSpeed = speeds.reduce((a, b) => a + b) / speeds.length;
+  return avgSpeed.toFixed(2);
+}</code></pre>
+
+    <p><strong>ポイント：</strong>キャッシュを無効にして正確な速度測定を狙い、複数回計測して平均値を取っています。</p>
+
+    <h3>3-2. Pingテスト</h3>
+    <p>小さな画像ファイルを何度も取得して応答速度を計測します。</p>
+    <pre><code>async function measurePing(repeatCount) {
+  let times = [];
+
+  for (let i = 0; i &lt; repeatCount; i++) {
+    const start = performance.now();
+    await fetch('test.jpg', {cache: 'no-store'});
+    const end = performance.now();
+    times.push(end - start);
+  }
+
+  const avgPing = times.reduce((a, b) => a + b) / times.length;
+  return avgPing.toFixed(2);
+}</code></pre>
+
+    <h3>3-3. 環境情報の取得</h3>
+    <p>ユーザーエージェント文字列を解析して、OSやブラウザ名を判別・表示しています。</p>
+    <pre><code>function getEnvInfo() {
+  const ua = navigator.userAgent;
+  // OSやブラウザ判定ロジック
+  return {
+    os: 'Windows 10',
+    browser: 'Chrome 90',
+    userAgent: ua
+  };
+}</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>4. 改善点・注意点</h2>
+    <ul>
+      <li>アップロードテストはサーバ実装がないと動作しません。</li>
+      <li>ファイルURLは環境に応じて変えられるようにすると良いです。</li>
+      <li>Pingは純粋なICMP Pingではなく、HTTPリクエストベースの応答時間なので精度は異なります。</li>
+      <li>テストキャンセル機能やUIの改善も今後の課題です。</li>
+      <li>プライバシー配慮として環境情報の扱いは注意しましょう。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>アプリ版はこちらから</h2>
+    <a href="https://apk-download-tau.vercel.app/Wi-Fi%E9%80%9F%E5%BA%A6%E3%83%86%E3%82%B9%E3%83%88.apk" class="download-btn" download>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#e0f2f1" stroke-width="2" stroke-linecap
