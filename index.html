@@ -5,119 +5,153 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Wi-Fi速度テスト</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Share+Tech+Mono&display=swap');
+
   body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #e0f7fa, #80deea);
-    color: #263238;
     margin: 0; padding: 0;
+    background: linear-gradient(135deg, #1b1b1b 0%, #2c2c2c 100%);
+    color: #cfd8dc;
+    font-family: 'Share Tech Mono', monospace;
+    user-select: none;
+    min-height: 100vh;
   }
+
   header {
-    background: #00796b;
-    color: #e0f2f1;
-    padding: 1.5rem 2rem;
-    text-align: center;
+    background: #0f131a;
+    color: #00ff99;
+    padding: 1.8rem 2rem;
+    font-family: 'Orbitron', sans-serif;
     font-weight: 700;
-    font-size: 1.8rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    font-size: 2.4rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-shadow:
+      0 0 6px #00ff99,
+      0 0 12px #00ff99,
+      0 0 18px #00ff99;
+    box-shadow: inset 0 0 15px #00ff99;
   }
+
   main {
-    max-width: 900px;
-    margin: 2rem auto 4rem;
+    max-width: 720px;
+    margin: 3rem auto 4rem;
     padding: 0 1.2rem;
   }
+
   section.card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    background: #121619dd;
+    border-radius: 14px;
     padding: 1.8rem 2rem;
-    margin-bottom: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2.5rem;
+    box-shadow:
+      0 0 8px #00ff9944,
+      0 0 20px #00ff9966;
+    transition: box-shadow 0.3s ease;
+    border: 1px solid #00ff99aa;
   }
   section.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+    box-shadow:
+      0 0 20px #00ff99cc,
+      0 0 40px #00ff99ff;
   }
+
   h1, h2 {
-    color: #004d40;
     margin-top: 0;
+    color: #00ff99;
+    text-shadow: 0 0 8px #00ff99;
   }
   h1 {
-    font-size: 2.6rem;
-    margin-bottom: 1.2rem;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.15em;
   }
   h2 {
-    font-size: 1.7rem;
-    margin-bottom: 1rem;
-    border-left: 5px solid #00796b;
-    padding-left: 0.6rem;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    border-left: 6px solid #00ff99;
+    padding-left: 0.7rem;
   }
-  p {
-    font-size: 1.05rem;
+
+  p, li {
+    font-size: 1.1rem;
     line-height: 1.6;
+    color: #b0f4cc;
   }
+
   ul {
-    padding-left: 1.2rem;
+    padding-left: 1.5rem;
   }
   ul li {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.7rem;
   }
+
   code {
-    background: #e0f2f1;
-    padding: 0.25rem 0.5rem;
-    border-radius: 5px;
-    font-family: 'Source Code Pro', monospace;
-    font-weight: 600;
-    color: #004d40;
+    background: #00220f;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 700;
+    color: #00ff99;
+    user-select: text;
   }
+
   pre {
-    background: #004d40;
-    color: #a7ffeb;
+    background: #003322;
+    color: #aaffcc;
     padding: 1rem 1.2rem;
     border-radius: 10px;
     overflow-x: auto;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Share Tech Mono', monospace;
     font-size: 0.9rem;
-    margin: 1rem 0;
+    margin: 1.3rem 0;
+    user-select: text;
+    box-shadow: inset 0 0 10px #00ff99aa;
   }
-  /* スムーズなスクロール */
-  html {
-    scroll-behavior: smooth;
-  }
-  /* リンク装飾（今回はなし） */
+
   a {
-    color: #00796b;
+    color: #00ff99;
     text-decoration: none;
     border-bottom: 2px solid transparent;
-    transition: border-color 0.25s ease;
+    transition: border-color 0.3s ease;
+    user-select: none;
   }
   a:hover {
-    border-color: #004d40;
+    border-color: #00ffaa;
   }
-  /* ダウンロードボタン */
+
   .download-btn {
     display: inline-flex;
     align-items: center;
-    background-color: #00796b;
-    color: #e0f2f1;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
+    justify-content: center;
+    background-color: #00ff99;
+    color: #121619;
+    padding: 0.75rem 1.8rem;
     font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0,121,107,0.3);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.25rem;
+    border-radius: 12px;
+    box-shadow:
+      0 0 12px #00ff99cc,
+      0 0 20px #00ff99ff;
+    cursor: pointer;
     user-select: none;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 1rem;
   }
   .download-btn:hover {
-    background-color: #004d40;
-    box-shadow: 0 6px 12px rgba(0,77,64,0.5);
+    background-color: #00dd88;
+    box-shadow:
+      0 0 24px #00ffbbff,
+      0 0 40px #00ffbbff;
   }
+
 </style>
 </head>
 <body>
 
 <header>
-  Wi-Fi速度テストコード 解説ページ
+  Wi-Fi速度テスト - 解説ページ
 </header>
 
 <main>
@@ -159,8 +193,6 @@
   return avgSpeed.toFixed(2);
 }</code></pre>
 
-    <p><strong>ポイント：</strong>キャッシュを無効にして正確な速度測定を狙い、複数回計測して平均値を取っています。</p>
-
     <h3>3-2. Pingテスト</h3>
     <p>小さな画像ファイルを何度も取得して応答速度を計測します。</p>
     <pre><code>async function measurePing(repeatCount) {
@@ -196,12 +228,18 @@
       <li>アップロードテストはサーバ実装がないと動作しません。</li>
       <li>ファイルURLは環境に応じて変えられるようにすると良いです。</li>
       <li>Pingは純粋なICMP Pingではなく、HTTPリクエストベースの応答時間なので精度は異なります。</li>
-      <li>テストキャンセル機能やUIの改善も今後の課題です。</li>
-      <li>プライバシー配慮として環境情報の扱いは注意しましょう。</li>
+      <li>測定時はネットワークの安定を確認してください。</li>
+      <li>速度は環境やタイミングによって変動します。</li>
     </ul>
   </section>
 
-  <section class="card">
-    <h2>アプリ版はこちらから</h2>
-    <a href="https://apk-download-tau.vercel.app/Wi-Fi%E9%80%9F%E5%BA%A6%E3%83%86%E3%82%B9%E3%83%88.apk" class="download-btn" download>
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#e0f2f1" stroke-width="2" stroke-linecap
+  <section class="card" style="text-align:center;">
+    <h2>apk版はこちらから</h2>
+    <a href="https://example.com/download/wi-fi-speed-test.zip" class="download-btn" download>
+      DL
+    </a>
+  </section>
+</main>
+
+</body>
+</html>
