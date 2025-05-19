@@ -3,155 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Wi-Fi速度テスト</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Share+Tech+Mono&display=swap');
-
-  body {
-    margin: 0; padding: 0;
-    background: linear-gradient(135deg, #1b1b1b 0%, #2c2c2c 100%);
-    color: #cfd8dc;
-    font-family: 'Share Tech Mono', monospace;
-    user-select: none;
-    min-height: 100vh;
-  }
-
-  header {
-    background: #0f131a;
-    color: #00ff99;
-    padding: 1.8rem 2rem;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    font-size: 2.4rem;
-    text-align: center;
-    letter-spacing: 0.1em;
-    text-shadow:
-      0 0 6px #00ff99,
-      0 0 12px #00ff99,
-      0 0 18px #00ff99;
-    box-shadow: inset 0 0 15px #00ff99;
-  }
-
-  main {
-    max-width: 720px;
-    margin: 3rem auto 4rem;
-    padding: 0 1.2rem;
-  }
-
-  section.card {
-    background: #121619dd;
-    border-radius: 14px;
-    padding: 1.8rem 2rem;
-    margin-bottom: 2.5rem;
-    box-shadow:
-      0 0 8px #00ff9944,
-      0 0 20px #00ff9966;
-    transition: box-shadow 0.3s ease;
-    border: 1px solid #00ff99aa;
-  }
-  section.card:hover {
-    box-shadow:
-      0 0 20px #00ff99cc,
-      0 0 40px #00ff99ff;
-  }
-
-  h1, h2 {
-    margin-top: 0;
-    color: #00ff99;
-    text-shadow: 0 0 8px #00ff99;
-  }
-  h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.15em;
-  }
-  h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
-    border-left: 6px solid #00ff99;
-    padding-left: 0.7rem;
-  }
-
-  p, li {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #b0f4cc;
-  }
-
-  ul {
-    padding-left: 1.5rem;
-  }
-  ul li {
-    margin-bottom: 0.7rem;
-  }
-
-  code {
-    background: #00220f;
-    padding: 0.3rem 0.6rem;
-    border-radius: 6px;
-    font-family: 'Share Tech Mono', monospace;
-    font-weight: 700;
-    color: #00ff99;
-    user-select: text;
-  }
-
-  pre {
-    background: #003322;
-    color: #aaffcc;
-    padding: 1rem 1.2rem;
-    border-radius: 10px;
-    overflow-x: auto;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.9rem;
-    margin: 1.3rem 0;
-    user-select: text;
-    box-shadow: inset 0 0 10px #00ff99aa;
-  }
-
-  a {
-    color: #00ff99;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.3s ease;
-    user-select: none;
-  }
-  a:hover {
-    border-color: #00ffaa;
-  }
-
-  .download-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #00ff99;
-    color: #121619;
-    padding: 0.75rem 1.8rem;
-    font-weight: 700;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.25rem;
-    border-radius: 12px;
-    box-shadow:
-      0 0 12px #00ff99cc,
-      0 0 20px #00ff99ff;
-    cursor: pointer;
-    user-select: none;
-    text-decoration: none;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 1rem;
-  }
-  .download-btn:hover {
-    background-color: #00dd88;
-    box-shadow:
-      0 0 24px #00ffbbff,
-      0 0 40px #00ffbbff;
-  }
-
-</style>
+<title>Wi-Fi速度テストコード解説 - 洗練UI版</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header>
-  Wi-Fi速度テスト - 解説ページ
+  Wi-Fi速度テストコード 解説ページ
 </header>
 
 <main>
@@ -228,18 +86,24 @@
       <li>アップロードテストはサーバ実装がないと動作しません。</li>
       <li>ファイルURLは環境に応じて変えられるようにすると良いです。</li>
       <li>Pingは純粋なICMP Pingではなく、HTTPリクエストベースの応答時間なので精度は異なります。</li>
-      <li>測定時はネットワークの安定を確認してください。</li>
-      <li>速度は環境やタイミングによって変動します。</li>
+      <li>テストキャンセル機能やUIの改善も今後の課題です。</li>
+      <li>プライバシー配慮として環境情報の扱いは注意しましょう。</li>
     </ul>
   </section>
 
-  <section class="card" style="text-align:center;">
-    <h2>apk版はこちらから</h2>
-    <a href="https://example.com/download/wi-fi-speed-test.zip" class="download-btn" download>
-      DL
-    </a>
-  </section>
-</main>
+<section class="card">
+  <h2>apkはこちらから</h2>
+  <p>
+    DL
+    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M5 20h14v-2H5v2zm7-18L5.33 9h4.17v6h5V9h4.17L12 2z"/>
+    </svg>
+  </p>
+</section>
+
+<footer>
+  © 2025 Wi-Fi速度テストプロジェクト
+</footer>
 
 </body>
 </html>
